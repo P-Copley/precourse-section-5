@@ -1,0 +1,30 @@
+.table {
+
+}
+
+.td {
+  width:auto;
+}
+
+#letters {
+  width:25%;
+  text-align: center;
+  margin:auto;
+}
+
+.answer {
+  width:25%;
+  margin:auto;
+}
+
+.gallows {
+  height: 200px;
+  width: 200px;
+  margin:auto;
+  text-align: center;
+  padding:50px;
+}
+
+.gallows img {
+  height: 100%;
+}
