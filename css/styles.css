@@ -35,9 +35,17 @@ h1 {
 #win {
   display:none;
   opacity:0;
+  margin-top:0px;
+  text-align: center;
+  padding:0px 50px 50px 50px;
+  border:solid red 2px;
 }
 
-#lose {
+#win span:hover{
+  cursor: pointer;
+}
+
+#lose{
   display:none;
   opacity:0;
   margin-top:0px;

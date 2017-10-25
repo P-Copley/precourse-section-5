@@ -1,5 +1,6 @@
-var used=[], it=["Qqwerty","foobar"], capitals =["London","Paris"];
-var word =it[0].toLowerCase().split("");
+var used=[], capitals =["London","Paris","Rome","Amsterdam","Moscow","Sarajevo","Oslo","Athens","Zagreb"];
+var r = Math.floor(Math.random()*capitals.length)
+var word =capitals[r].toLowerCase().split("");
 var count =0;
 $(document).ready(() => {
 
@@ -14,8 +15,8 @@ $(document).ready(() => {
       $(".answer").append("<td id=a"+word[i]+">_</td><td>&nbsp;,&nbsp;</td>")
     }
   }
-  genanswer();
   alphabet();
+  genanswer();
 // keypress adds the presses key to used and if id matches reveals correct letters
   $(document).keypress(function() {
     var guess =String.fromCharCode(event.which).toLowerCase();
@@ -33,20 +34,30 @@ $(document).ready(() => {
     $("[id=a"+guess+"]").html("<u>"+guess+"</u>")
     end();
   })
-
+// end checks to see if complete or out of lives.
   function end(){
     if (count === 6){
       document.getElementById("lose").style.display = "block";
       $("#lose").animate({opacity:"1",height:"100px"},"slow");
     }
+    if ($(".answer").text().includes("_") === false){
+      document.getElementById("win").style.display = "block";
+      $("#win").animate({opacity:"1",height:"100px"},"slow");
+    }
   }
+// generate a new word from the array.
 });
+
+function newWord(){
+  location.reload();
+}
 
 function reveal(){
   for (var i=0; i<word.length; i++){
     $("[id=a"+word[i]+"]").html("<u>"+word[i]+"</u>")
   }
 }
+
 // Account for caps and space
 
 /*

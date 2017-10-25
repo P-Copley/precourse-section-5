@@ -9,13 +9,15 @@
 
 <body>
     <h1>Hangman</h1>
-      <div class="cat">Category: </div>
+      <div class="cat">Category: Capital Cities</div>
       <div id="letters"></div>
     <div class="gallows"><img src="images/0.jpg"></img></div>
     <div class="answer"></div>
-      <p id="guess"> Used letters #guess: </p>
-      <div id ="win"><p>Congratulations!</p><p>Play again</p></div>
-      <div id ="lose">Bad luck! <span onclick=reveal()><u>Click to see the full answer.</u></span>.</div>
+      <p id="guess"> Used letters: </p>
+      <div id ="win"><p>Congratulations!</p><span onclick=newWord()><u>Play again</u></span></div>
+      <div id ="lose">Bad luck! <span onclick=reveal()><u>Click to see the full answer.</u></span>
+        <p><span onclick=newWord()><u>Play again</u></span></p>
+      </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="js/main.js"></script>
