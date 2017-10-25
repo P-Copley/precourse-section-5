@@ -4,22 +4,19 @@
   <meta charset="utf-8"/>
   <title>Hangman</title>
   <link rel="stylesheet" href="css/styles.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
 </head>
 
 <body>
     <h1>Hangman</h1>
-    <h2>link to website here<h2>
-      <button id="but">Click Me!</button>
-      <table>
-        <tbody>
-          <tr>
+      <div class="cat">Category: </div>
       <div id="letters"></div>
-    </tr>
-  </tbody>
-    </table>
     <div class="gallows"><img src="images/0.jpg"></img></div>
     <div class="answer"></div>
       <p id="guess"> Used letters #guess: </p>
+      <div id ="win"><p>Congratulations!</p><p>Play again</p></div>
+      <div id ="lose">Bad luck! <span onclick=reveal()><u>Click to see the full answer.</u></span>.</div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="js/main.js"></script>
 </body>
