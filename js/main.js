@@ -1,4 +1,4 @@
-var used=[], capitals =["London","Paris","Rome","Amsterdam","Moscow","Sarajevo","Oslo","Athens","Zagreb"];
+var used=[], capitals =["Washington DC","London ","Paris ","Rome","Amsterdam","Moscow","Sarajevo","Oslo","Athens","Zagreb","Lisbon","Warsaw","Kiev","Madrid","Vienna"];
 var r = Math.floor(Math.random()*capitals.length)
 var word =capitals[r].toLowerCase().split("");
 var count =0;
@@ -10,29 +10,35 @@ $(document).ready(() => {
     }
   }
   //genanswer makes "_"'s for hidden letters and sets id's to identify letters.
-    function genanswer(){
+  function genanswer(){
     for(var i=0; i<word.length; i++){
-      $(".answer").append("<td id=a"+word[i]+">_</td><td>&nbsp;,&nbsp;</td>")
+      if (/[a-zA-Z]/.test(word[i])){
+        $(".answer").append("<td id=a"+word[i]+">_</td><td>&nbsp;&nbsp;</td>")
+      } else {
+        $(".answer").append("<td>"+word[i]+"</td><td>&nbsp;&nbsp;</td>")
+      }
     }
   }
   alphabet();
   genanswer();
-// keypress adds the presses key to used and if id matches reveals correct letters
+// keypress adds the pressed key to used and if id matches reveals correct letters
   $(document).keypress(function() {
     var guess =String.fromCharCode(event.which).toLowerCase();
-    if (used.indexOf(guess) === -1){
-      $("#guess").append(guess);
-      if (word.indexOf(guess) === -1 && used.indexOf(guess) === -1){
-        if (count <6){
-          count ++;
-          $(".gallows img").attr("src","images/"+count+".jpg")
+    if (/[a-z]/.test(guess)){
+      if (used.indexOf(guess) === -1){
+        $("#guess").append(guess);
+        if (word.indexOf(guess) === -1 && used.indexOf(guess) === -1){
+          if (count <6){
+            count ++;
+            $(".gallows img").attr("src","images/"+count+".jpg")
+          }
         }
-      }
-      used.push(guess);
-    };
-    $("#"+guess+"").css("color","red");
-    $("[id=a"+guess+"]").html("<u>"+guess+"</u>")
-    end();
+        used.push(guess);
+      };
+      $("#"+guess+"").css("color","red");
+      $("[id=a"+guess+"]").html("<u>"+guess+"</u>")
+      end();
+    }
   })
 // end checks to see if complete or out of lives.
   function end(){
@@ -45,13 +51,13 @@ $(document).ready(() => {
       $("#win").animate({opacity:"1",height:"100px"},"slow");
     }
   }
-// generate a new word from the array.
 });
 
+// generate a new word from the array.
 function newWord(){
   location.reload();
 }
-
+// show the answer
 function reveal(){
   for (var i=0; i<word.length; i++){
     $("[id=a"+word[i]+"]").html("<u>"+word[i]+"</u>")
@@ -61,8 +67,5 @@ function reveal(){
 // Account for caps and space
 
 /*
-variables: list of letters, chosen letters, remaining letters, hangman image + end condition,
-arrays - list of words + cats, catarr[ans,ans,ans], stored letters to prevent reuse
-jquery events, inputs -> start with list of letters, then add keystrokes,
-extras - difficulty levels
+extras - difficulty levels / styling
 */
